@@ -1,0 +1,11 @@
+<h1>Edit <%= @list.name %> </h1>
+<%= form_for [@board, @list] do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name, required: true, autofocus: true %>
+<%= f.submit %>
+<% end %>
+<br />
+<%= link_to 'Delete List', [@board, @list], method: :delete, :class => 'red ui basic tiny button' %>
+<br /><br />
+
+<%= link_to "Back", user_board_path(@user, @board) %>

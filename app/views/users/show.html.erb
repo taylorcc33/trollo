@@ -10,13 +10,13 @@
       <div class="header"><%= board.name %></div>
     </div>
     <div class="ui two bottom attached buttons">
-      <%= link_to 'View', board_path(board), :class => 'blue ui button' %>
-      <%= link_to 'Edit', edit_board_path(board), :class => 'teal ui button' %>
+      <%= link_to 'View', user_board_path(current_user, board), :class => 'blue ui button' %>
+      <%= link_to 'Edit', edit_user_board_path(current_user, board), :class => 'teal ui button' %>
     </div>
   </div>
   <% end %>
 </div>
 <br />
-<%= link_to 'Add Board', new_board_path, :class => 'green ui button' %>
+<%= link_to 'Add Board', new_user_board_path(@user), :class => 'green ui button' %>
 <br /><br /><br />
 <%= button_to "Log Out", destroy_user_session_path, method: :delete, :class => 'red basic ui button' %>

@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  root "boards#index"
+  root "users#profile"
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :boards
+  resources :users do
+    resources :boards
+  end
+
+  resources :boards do
+    resources :lists
+  end
 end
