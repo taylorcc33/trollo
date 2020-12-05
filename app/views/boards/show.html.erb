@@ -1,4 +1,4 @@
-<h1><%= @board.name %></h1>
+<h1><%= @board.name %> Board</h1>
 <hr>
 <br />
 
@@ -9,6 +9,11 @@
     <div class='content'>
       <div class='header'><%=list.name%></div>
     </div>
+    <% list.tasks.each do |task| %>
+    <div class='content'>
+      <%= task.name %>
+    </div>
+    <% end %>
     <div class='ui two bottom attached basic buttons'>
       <%= link_to 'Edit List', edit_board_list_path(@board, list), :class => 'ui teal basic button' %>
     </div>
