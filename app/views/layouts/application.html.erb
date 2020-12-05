@@ -12,14 +12,82 @@
   <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="semantic/dist/semantic.min.js"></script>
+
+  <style>
+    #content {
+      min-height: 100px;
+    }
+
+    .ui.grid {
+      padding: 0 !important;
+    }
+
+    .pushable.segment {
+      margin: 0 !important;
+    }
+  </style>
+
+
+
+
 </head>
 
 <body>
-  <div class="ui container">
-    <p class="notice"><%= notice %> </p>
-    <p class="alert"><%= alert %> </p>
-    <%= yield %>
+
+
+  <div class="ui grid">
+
+    <div class="computer only row">
+      <div class="column">
+        <div class="ui menu">
+          <a class="item">Menu Item A</a>
+          <a class="item">Menu Item B</a>
+          <a class="item">Menu Item C</a>
+          <a class="item">Menu Item D</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tablet mobile only row">
+      <div class="column">
+        <div class="ui menu">
+          <a id="mobile_item" class="item"><i class="bars icon"></i></a>
+        </div>
+      </div>
+    </div>
+
   </div>
+
+  <div class="ui pushable segment">
+    <div class="ui sidebar vertical menu">
+      <a class="item">Menu Item A</a>
+      <a class="item">Menu Item B</a>
+      <a class="item">Menu Item C</a>
+      <a class="item">Menu Item D</a>
+    </div>
+    <div class="pusher">
+      <div id="content" class="ui segment">
+        <div class="ui container">
+          <p class="notice"><%= notice %> </p>
+          <p class="alert"><%= alert %> </p>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <script>
+    $('.ui.sidebar').sidebar({
+      context: $('.ui.pushable.segment'),
+      transition: 'overlay'
+    }).sidebar('attach events', '#mobile_item');
+  </script>
+
 </body>
 
 </html>
